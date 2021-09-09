@@ -1,4 +1,4 @@
-<form method="get" action="creerVoiture.php">
+<form method="post" action="creerVoiture.php">
   <fieldset>
     <legend>Mon formulaire :</legend>
     <p>
