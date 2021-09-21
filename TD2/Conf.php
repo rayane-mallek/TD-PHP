@@ -7,6 +7,8 @@ class Conf {
     'login' => 'mallekr',
     'password' => 'mallekr'
   );
+
+  private static $debug = True;;
    
   static public function getHostname() {
     return self::$databases['hostname'];
@@ -22,6 +24,10 @@ class Conf {
 
   static public function getPassword() {
     return self::$databases['password'];
+  }
+
+  public static function getDebug() {
+    return self::$debug;
   }
    
 }
