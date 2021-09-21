@@ -12,9 +12,11 @@ class Trajet {
 
    
     // un constructeur
-    public function __construct($data) {
-        foreach($data as $nom_attribut => $valeur) {
-            $this->nom_attribut = $valeur;
+    public function __construct($data = NULL) {
+        if (!is_null($data)) {
+            foreach($data as $nom_attribut => $valeur) {
+                $this->nom_attribut = $valeur;
+            }
         }
     } 
 
