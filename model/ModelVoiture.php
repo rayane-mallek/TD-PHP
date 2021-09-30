@@ -1,6 +1,7 @@
 <?php
+require_once '../model/Model.php';
    
-class Voiture {
+class ModelVoiture {
    
     private $marque;
     private $couleur;
@@ -36,7 +37,7 @@ class Voiture {
     }
    
     // un constructeur
-    public function __construct($m = NULL, $c = NULL, $i = NULL) {
+    public function __construct($i = NULL, $m = NULL, $c = NULL) {
         if (!is_null($m) && !is_null($c) && !is_null($i)) {
         // Si aucun de $m, $c et $i sont nuls,
         // c'est forcement qu'on les a fournis
@@ -48,15 +49,15 @@ class Voiture {
     }
                  
     // une methode d'affichage.
-    public function afficher() {
+    /*public function afficher() {
       echo "Marque : $this->marque,
       Couleur : $this->couleur,
       Immatriculation : $this->immatriculation.";
-    }
+    }*/
 
     public static function getAllVoitures() {
         $rep = Model::getPDO()->query("SELECT * FROM voiture");
-        $rep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
+        $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelVoiture');
         $tab_voit = $rep->fetchAll();
 
         return $tab_voit;
@@ -75,7 +76,7 @@ class Voiture {
         $req_prep->execute($values);
     
         // On récupère les résultats comme précédemment
-        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelVoiture');
         $tab_voit = $req_prep->fetchAll();
         // Attention, si il n'y a pas de résultats, on renvoie false
         if (empty($tab_voit))
@@ -84,7 +85,7 @@ class Voiture {
     }
 
     public function save() {
-        $sql = "INSERT INTO Voiture VALUES (:immat, :marque, :couleur)";
+        $sql = "INSERT INTO voiture VALUES (:immat, :marque, :couleur)";
         $values = array(
             "immat" => $this->immatriculation,
             "marque" => $this->marque,
