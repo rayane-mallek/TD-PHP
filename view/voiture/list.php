@@ -6,7 +6,7 @@
     </head>
     <body>
         <?php foreach ($tab_v as $v): ?>
-        <a href="./routeur.php?action=read&immatriculation=<?= $v->getImmatriculation() ?>">Voiture d'immatriculation <?= $v->getImmatriculation() ?></a>
+        <a href="./index.php?action=read&immatriculation=<?= $v->getImmatriculation() ?>">Voiture d'immatriculation <?= $v->getImmatriculation() ?></a>
         <br />
     <?php endforeach; ?>
     </body>

@@ -1,10 +1,15 @@
 <?php
-require_once ('../model/ModelVoiture.php'); // chargement du modèle
+
+$ROOT_FOLDER = "/home/ann2/mallekr/public_html/PHP";
+require_once "{$ROOT_FOLDER}/lib/File.php";
+
+require_once File::build_path(array("model","ModelVoiture.php"));
+
 
 class ControllerVoiture {
     public static function readAll() {
         $tab_v = ModelVoiture::getAllVoitures();     //appel au modèle pour gerer la BD
-        require ('../view/voiture/list.php');  //"redirige" vers la vue
+        require File::build_path(array("view", "voiture", "list.php"));  //"redirige" vers la vue
     }
 
     public static function read() {
@@ -16,15 +21,15 @@ class ControllerVoiture {
             }
     	}
 
-    	if (empty($tab_voit)) {
-    		require ('../view/voiture/error.php');
+    	if (empty($tab_v)) {
+    		require File::build_path(array("view", "voiture","error.php"));
     	} else {
-    		require ('../view/voiture/detail.php');
+    		require File::build_path(array("view", "voiture","detail.php"));
     	}
     }
 
     public static function create() {
-    	require ('../view/voiture/create.php');
+    	require File::build_path(array("view", "voiture","create.php"));
     }
 
     public static function created() {
