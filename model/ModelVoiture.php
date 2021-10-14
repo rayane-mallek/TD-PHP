@@ -1,10 +1,11 @@
 <?php
-$ROOT_FOLDER = "/home/ann2/mallekr/public_html/PHP";
-require_once "{$ROOT_FOLDER}/lib/File.php";
+$ROOT_FOLDER = __DIR__;
+$DS = DIRECTORY_SEPARATOR;
+require_once $ROOT_FOLDER . $DS . '..' . $DS . 'lib' . $DS . 'File.php';
 
 require_once File::build_path(array("model","Model.php"));
    
-  
+
 class ModelVoiture {
    
     private $marque;
