@@ -7,7 +7,7 @@ class File {
     	// "/home/ann2/mallekr/public_html/PHP" à l'IUT 
     	$ROOT_FOLDER = __DIR__;
     	$DS = DIRECTORY_SEPARATOR;
-    	return $ROOT_FOLDER . $DS . join($DS, $path_array);
+    	return $ROOT_FOLDER . $DS . '..' . $DS . join($DS, $path_array);
 	}
 }
 

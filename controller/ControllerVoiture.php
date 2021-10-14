@@ -10,27 +10,42 @@ require_once File::build_path(array("model","ModelVoiture.php"));
 class ControllerVoiture {
     public static function readAll() {
         $tab_v = ModelVoiture::getAllVoitures();     //appel au modèle pour gerer la BD
-        require File::build_path(array("view", "voiture", "list.php"));  //"redirige" vers la vue
+
+        $controller = 'voiture';
+        $view = 'list';
+        $pagetitle = 'Liste des voitures';
+        require File::build_path(array("view", "view.php"));  //"redirige" vers la vue
     }
 
     public static function read() {
-    	$tab_v = ModelVoiture::getAllVoitures();
+    	$v = ModelVoiture::getVoitureByImmat($_GET['immatriculation']);
 
-    	foreach ($tab_v as $voiture) {
+    	/*foreach ($tab_v as $voiture) {
             if ($voiture == $_GET['immatriculation']) {
             	$v = $voiture;
+                break;
             }
-    	}
+    	}*/
 
-    	if (empty($tab_v)) {
-    		require File::build_path(array("view", "voiture","error.php"));
+    	if (empty($v)) {
+            $controller = 'voiture';
+            $view = 'error';
+            $pagetitle = 'Erreur';
+    		require File::build_path(array("view", "view.php"));
+
     	} else {
-    		require File::build_path(array("view", "voiture","detail.php"));
+            $controller = 'voiture';
+            $view = 'detail';
+            $pagetitle = 'Détail de la voiture';
+    		require File::build_path(array("view", "view.php"));
     	}
     }
 
     public static function create() {
-    	require File::build_path(array("view", "voiture","create.php"));
+        $controller = 'voiture';
+        $view = 'create';
+        $pagetitle = 'Formulaire';
+    	require File::build_path(array("view", "view.php"));
     }
 
     public static function created() {
