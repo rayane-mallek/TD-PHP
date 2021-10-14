@@ -20,13 +20,6 @@ class ControllerVoiture {
     public static function read() {
     	$v = ModelVoiture::getVoitureByImmat($_GET['immatriculation']);
 
-    	/*foreach ($tab_v as $voiture) {
-            if ($voiture == $_GET['immatriculation']) {
-            	$v = $voiture;
-                break;
-            }
-    	}*/
-
     	if (empty($v)) {
             $controller = 'voiture';
             $view = 'error';
