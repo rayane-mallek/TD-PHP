@@ -48,5 +48,9 @@ class ControllerVoiture {
         $tab_v = ModelVoiture::getAllVoitures();
         require File::build_path(array("view", "created.php"));
     }
+
+    public static function error() {
+        echo "<p>Pas d'actions à ce nom</p>";
+    }
 }
 ?>

@@ -9,5 +9,12 @@ if (!isset($_GET['action'])) {
     $action = $_GET['action'];
 }
 // Appel de la méthode statique $action de ControllerVoiture
-ControllerVoiture::$action(); 
+$allMethodsControllerVoiture = get_class_methods("ControllerVoiture");
+
+if (in_array($action, $allMethodsControllerVoiture)) {
+    ControllerVoiture::$action(); 
+} else {
+    ControllerVoiture::error();
+}
+
 ?>
