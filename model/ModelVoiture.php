@@ -99,6 +99,13 @@ class ModelVoiture {
         $req_prep = Model::getPDO()->prepare($sql);
         $req_prep->execute($values);
     }
+
+    public static function deleteByImmat($immat)  {
+        $sql = "DELETE FROM voiture WHERE immat = :immat";
+        $values = array("immat" => $immat);
+        $req_prep = Model::getPDO()->prepare($sql);
+        $req_prep->execute($values);
+    }
 }
 
 ?>
