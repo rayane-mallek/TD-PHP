@@ -44,7 +44,9 @@ class ControllerVoiture {
     public static function created() {
     	$voiture = new ModelVoiture($_POST['immatriculation'], $_POST['marque'], $_POST['couleur']);
     	$voiture->save();
-    	self::readAll();
+    	//self::readAll();
+        $tab_v = ModelVoiture::getAllVoitures();
+        require File::build_path(array("view", "created.php"));
     }
 }
 ?>
