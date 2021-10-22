@@ -101,7 +101,7 @@ class ModelVoiture {
     }
 
     public static function deleteByImmat($immat)  {
-        $sql = "DELETE FROM voiture WHERE immat = :immat";
+        $sql = "DELETE FROM voiture WHERE immatriculation = :immat";
         $values = array("immat" => $immat);
         $req_prep = Model::getPDO()->prepare($sql);
         $req_prep->execute($values);

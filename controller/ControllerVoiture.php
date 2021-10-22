@@ -44,13 +44,25 @@ class ControllerVoiture {
     public static function created() {
     	$voiture = new ModelVoiture($_POST['immatriculation'], $_POST['marque'], $_POST['couleur']);
     	$voiture->save();
-    	//self::readAll();
         $tab_v = ModelVoiture::getAllVoitures();
         require File::build_path(array("view", "created.php"));
     }
 
     public static function error() {
         echo "<p>Pas d'actions à ce nom</p>";
+    }
+
+    public static function delete() {
+        ModelVoiture::deleteByImmat($_GET['immatriculation']);
+        $tab_v = ModelVoiture::getAllVoitures();
+        $immat = $_GET['immatriculation'];
+
+
+        $controller = 'voiture';
+        $view = 'deleted';
+        $pagetitle = 'Suppression de voiture';
+        require File::build_path(array("view", "view.php"));
+
     }
 }
 ?>
