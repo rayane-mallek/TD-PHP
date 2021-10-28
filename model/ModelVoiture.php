@@ -106,6 +106,17 @@ class ModelVoiture {
         $req_prep = Model::getPDO()->prepare($sql);
         $req_prep->execute($values);
     }
+
+    public static function update($data) {
+        $sql = "UPDATE voiture SET couleur = :couleur, marque = :marque WHERE immatriculation = :immat";
+        $values = array(
+            "immat" => $data['immatriculation'],
+            "couleur" => $data['couleur'],
+            "marque" => $data['marque']
+        );
+        $req_prep = Model::getPDO()->prepare($sql);
+        $req_prep->execute($values);
+    }
 }
 
 ?>

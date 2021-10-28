@@ -64,5 +64,30 @@ class ControllerVoiture {
         require File::build_path(array("view", "view.php"));
 
     }
+
+    public static function update() {
+        $v = ModelVoiture::getVoitureByImmat($_GET['immatriculation']);
+        $controller = 'voiture';
+        $view = 'update';
+        $pagetitle = 'Formulaire d\'édition';
+    	require File::build_path(array("view", "view.php"));
+    }
+
+    public static function updated() {
+        $v = ModelVoiture::getVoitureByImmat($_POST['immatriculation']);
+        $tab_v = ModelVoiture::getAllVoitures();
+
+        $data = array(
+            "immatriculation" => $_POST['immatriculation'],
+            "marque" => $_POST['marque'],
+            "couleur" => $_POST['couleur']
+        );
+
+        $v->update($data);
+        $controller = 'voiture';
+        $view = 'updated';
+        $pagetitle = 'Modification de voiture';
+        require File::build_path(array("view", "view.php"));
+    }
 }
 ?>
